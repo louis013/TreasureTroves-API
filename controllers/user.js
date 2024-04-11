@@ -65,6 +65,43 @@ module.exports.loginUser = (req, res) => {
         return res.status(400).send({error: "Invalid email"});
     }
 };
+//Controller for getting all user details
+module.exports.userDetails = (req,res) => {
+    return User.find({}).then(user => {
+        if (!user) {
+    	    return res.status(404).send({ error: 'User not found' });
+    	}
+        let users = user.map((x) => {
+            x.password = ""
+            return x
+        })
+        res.status(200).send({users: users})
+        
+    })
+}
+//Controller for setting a user as admin
+module.exports.setAsAdmin = (req,res) => {
+        
+        if (req.user.isAdmin == true){
+            return User.findByIdAndUpdate(req.params.userId, {isAdmin: true}, {new:true})
+            .then(user => {
+                if (user) {
+                    res.status(200).send({
+                        message: 'User promoted to Admin',
+                    });
+                } else {
+                    res.status(400).send({error: "User not found"});
+                }
+            })
+            .catch(err => {
+                console.error("Error in promoting user: ", err)
+                return res.status(500).send({ error: 'Error in promoting user' })
+            });
+        }
+        else{
+            return res.status(403).send(false);
+        }
+    }
 
 module.exports.updatePassword = async (req, res) => {
     try {
