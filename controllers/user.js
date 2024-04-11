@@ -31,7 +31,7 @@ module.exports.registerUser = (req, res) => {
             res.status(500).send({error: "Error in registering"});
         })
     }
-}
+};
 
 // Login User
 module.exports.loginUser = (req, res) => {
@@ -64,4 +64,24 @@ module.exports.loginUser = (req, res) => {
     else {
         return res.status(400).send({error: "Invalid email"});
     }
-}
+};
+
+module.exports.updatePassword = async (req, res) => {
+    try {
+		const { newPassword } = req.body;
+		const { id } = req.user; // Extracting user ID from the authorization header
+	
+		// Hashing the new password
+		const hashedPassword = await bcrypt.hash(newPassword, 10);
+	
+		// Updating the user's password in the database
+		await User.findByIdAndUpdate(id, { password: hashedPassword });
+	
+		// Sending a success response
+		res.status(200).json({ message: 'Password updated successfully' });
+	}
+	catch (error) {
+		console.error(error);
+		res.status(500).json({ message: 'Internal server error' });
+	}
+};
