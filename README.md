@@ -11,7 +11,7 @@
   * email: macgyver@gmail.com
   * password: macnotangus
 * Dummy Customer
-  * email:jasper@gmail.com
+  * email: jasper@gmail.com
   * password: 987654321
 
 ## Features
