@@ -66,7 +66,7 @@ module.exports.loginUser = (req, res) => {
     }
 };
 //Controller for getting all user details
-module.exports.userDetails = (req,res) => {
+module.exports.userDetails = (req, res) => {
     return User.find({}).then(user => {
         if (!user) {
     	    return res.status(404).send({ error: 'User not found' });
@@ -89,8 +89,9 @@ module.exports.setAsAdmin = (req,res) => {
                     res.status(200).send({
                         message: 'User promoted to Admin',
                     });
-                } else {
-                    res.status(400).send({error: "User not found"});
+                } 
+                else {
+                    res.status(404).send({error: "User not found"});
                 }
             })
             .catch(err => {
@@ -99,7 +100,7 @@ module.exports.setAsAdmin = (req,res) => {
             });
         }
         else{
-            return res.status(403).send(false);
+            return res.status(400).send({error: "User is not admin"});
         }
     }
 
