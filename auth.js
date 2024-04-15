@@ -50,3 +50,21 @@ module.exports.verify = (req, res, next) => {
         })
     }
 }
+
+module.exports.verifyAdmin = (req, res, next) => {
+    console.log("Result from verifyAdmin method:");
+    console.log(req.user);
+
+    // Checks if the owner of the token is an admin
+    if(req.user.isAdmin) {
+        // Move to the next middleware
+        next();
+    }
+    // If not admin, send the status and message
+    else {
+        return res.status(403).send({
+            auth: "Falied",
+            message: "Action Forbidden"
+        });
+    }
+}
