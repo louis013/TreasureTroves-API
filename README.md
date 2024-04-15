@@ -26,6 +26,10 @@
 * Update Product Information (Admin only)
 * Archive Product (Admin only)
 * Activate Product (Admin only)
+
+**Cart Resources**
+* Add to cart
+
 ### Features by Kenan Daniel Alcantara
 **User Resources**
 * Retrieve user details
@@ -35,3 +39,7 @@
 * Retrieve all products
 * Retrieve all active products
 * Retrieve single product
+
+**Cart Resources**
+* Get User's Cart
+* Change product quantities
