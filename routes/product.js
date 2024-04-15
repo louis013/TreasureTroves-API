@@ -7,6 +7,12 @@ const {verify, verifyAdmin} = require("../auth");
 // Route for creating product (ADMIN)
 router.post('/', verify, verifyAdmin, productController.createProduct);
 
+router.get('/all', verify, verifyAdmin, productController.retrieveAllProducts)
+
+router.get('/', verify, productController.retrieveAllActiveProducts)
+
+router.get('/:productid', verify, productController.retrieveSingleProduct)
+
 // Route for updating product (ADMIN)
 router.patch('/:productId/update', verify, verifyAdmin, productController.updateProduct);
 

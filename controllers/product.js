@@ -17,6 +17,33 @@ module.exports.createProduct = (req, res) => {
     })
 };
 
+// Retrieve all Products (Admin)
+module.exports.retrieveAllProducts = async (req,res) => {
+    try {
+        const product = await Product.find({})
+        res.status(200).send({product})
+    } catch (error) {
+        res.status(404).send({error: 'Items not Found'})
+    }
+}
+
+// Retrieve all active Products
+module.exports.retrieveAllActiveProducts = async (req,res) => {
+    const activeProducts = await Product.find({isActive: true})
+    res.status(200).send({activeProducts})
+}
+
+// Retrieve single product
+module.exports.retrieveSingleProduct = async (req,res) => {
+    try {
+        const { productid } = req.params
+        const product = await Product.findOne({_id: productid})
+        res.status(200).send({product})
+    } catch (error) {
+        res.status(404).send({error: "Item not found"})
+    }
+}
+
 // Update product (ADMIN)
 module.exports.updateProduct = (req, res) => {
 
