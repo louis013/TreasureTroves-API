@@ -4,11 +4,12 @@ const port = 4000;
 
 const userRoutes = require("./routes/user");
 const productRoutes = require("./routes/product");
+const cartRoutes = require("./routes/cart");
 
 const app = express();
 
 // MongoDB Connection
-mongoose.connect("mongodb+srv://alcantarakenandaniel:wnCWEsmez5t5kZBE@b402.rmrkku1.mongodb.net/EcommerceAPI?retryWrites=true&w=majority&appName=B402");
+mongoose.connect("mongodb+srv://admin:admin123@b402-course-booking.e2a6mg0.mongodb.net/ecommerce-api?retryWrites=true&w=majority&appName=B402-course-booking");
 
 let db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection error"));
@@ -20,6 +21,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
+app.use("/cart", cartRoutes);
 
 if(require.main === module) {
     app.listen(process.env.PORT || port, () => {
