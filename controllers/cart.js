@@ -50,19 +50,19 @@ module.exports.addProductsToCart =  async (req, res) => {
             }
 
             // Check if the cart already contains the product id
-            const productIndex = cart.cartItems.findIndex(item => item.productId === req.body.cartItems[0].productId);
+            const productIndex = cart.cartItems.findIndex(item => item.productId === req.body.productId);
             
             if (productIndex !== -1) {
                 // If product already exists, update quantity and subtotal
-                cart.cartItems[productIndex].quantity += req.body.cartItems[0].quantity;
-                cart.cartItems[productIndex].subtotal += req.body.cartItems[0].subtotal;
+                cart.cartItems[productIndex].quantity += req.body.quantity;
+                cart.cartItems[productIndex].subtotal += req.body.subtotal;
             }
             else {
                 // If product does not exist, add it to the cart
                 cart.cartItems.push({
-                productId: req.body.cartItems[0].productId,
-                quantity: req.body.cartItems[0].quantity,
-                subtotal: req.body.cartItems[0].subtotal
+                productId: req.body.productId,
+                quantity: req.body.quantity,
+                subtotal: req.body.subtotal
                 });
             }
             console.log(cart.cartItems);
