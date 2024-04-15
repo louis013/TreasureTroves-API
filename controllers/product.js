@@ -7,14 +7,25 @@ module.exports.createProduct = (req, res) => {
         name: req.body.name,
         description: req.body.description,
         price: req.body.price
+    });
+
+    Product.findOne({name: req.body.name})
+    .then(existingProduct => {
+        if(existingProduct) {
+            return res.status(409).send({error: "Product already exists"})
+        }
+
+        return newProduct.save()
+        .then((product) => res.status(201).send({message: "Product added successfully"}))
+        .catch(err => {
+            console.error("Error in adding product: ", err);
+            res.status(500).send({error: "Error in adding product"})
+        })
     })
-    
-    return newProduct.save()
-    .then((product) => res.status(201).send({message: "Product added successfully"}))
-    .catch(err => {
-        console.error("Error in adding product: ", err);
-        res.status(500).send({error: "Error in adding product"})
-    })
+    .catch(findErr => {
+        console.error("Error in finding the product: ", findErr)
+        return res.status(500).send({error: "Error in finding the product"})
+    })  
 };
 
 // Retrieve all Products (Admin)
