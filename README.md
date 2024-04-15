@@ -15,12 +15,23 @@
   * password: 987654321
 
 ## Features
-## Features by del Rosario
-### User Resources
+### Features by Louis Angelo del Rosario
+**User Resources**
 * User registration
 * User login/authentication
 * Update password
-## Features by Alcantara
-### User Resources
+
+**Product Resources**
+* Create Product (Admin only)
+* Update Product Information (Admin only)
+* Archive Product (Admin only)
+* Activate Product (Admin only)
+### Features by Kenan Daniel Alcantara
+**User Resources**
 * Retrieve user details
 * Set user as Admin (Admin only)
+
+**Product Resources**
+* Retrieve all products
+* Retrieve all active products
+* Retrieve single product
