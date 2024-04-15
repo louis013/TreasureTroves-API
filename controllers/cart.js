@@ -1,5 +1,35 @@
 const Cart = require("../models/Cart");
 
+module.exports.getProductsCart = async (req,res) => {
+
+    try {
+        const cartUser = await Cart.findOne({userId: req.user.id})
+        res.status(200).send({cartUser})
+    } catch (error) {
+        res.status(404).send({error: "Cannot find Cart"})
+    }
+    
+}
+
+module.exports.updateCartQuantity = async (req,res) => {
+
+    try {
+        const cartUser = await Cart.findOne({userId: req.user.id})
+        const {cartItems} = cartUser
+         cartItems.forEach(element => {
+            if(element.productId == req.body.productId) {
+                element.quantity = req.body.quantity
+                element.subtotal *= req.body.quantity
+            }
+        });
+        await Cart.findOneAndUpdate({userId: req.user.id}, {cartItems: cartItems})
+        res.status(200).send({message: "Cart quantity updated"})
+    } catch (error) {
+        res.status(404).send({error: "Cannot find Cart"})
+    }
+    
+}
+
 // Add products to cart
 module.exports.addProductsToCart =  async (req, res) => {
 
