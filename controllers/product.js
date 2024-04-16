@@ -139,8 +139,8 @@ module.exports.searchByName = async (req,res) => {
 
 module.exports.searchByPrice = async (req, res) => {
     try {
-        const {priceRange} = req.body
-        const productSearchedByPrice = await Product.find({ price: { $lte: priceRange } })
+        const {minPrice, maxPrice} = req.body
+        const productSearchedByPrice = await Product.find({ price: { $lte: maxPrice, $gte: minPrice } })
         res.status(200).send({productSearchedByPrice})
     } catch (error) {
         res.status(404).send({error: "Product not Found"})
