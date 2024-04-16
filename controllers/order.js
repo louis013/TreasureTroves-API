@@ -47,3 +47,22 @@ module.exports.createOrder = async (req, res) => {
         res.status(500).json({ message: 'Internal server error.', error: error.message });
     }
 };
+
+module.exports.userOrder = async (req,res) => {
+    try {
+        const {id} = req.user
+        const userOrder = await Order.findOne({userId: id})
+        res.status(200).send({userOrder})
+    } catch (error) {
+        res.status(404).send(error)
+    }
+}
+
+module.exports.allOrders = async (req,res) => {
+    try {
+        const allOrders = await Order.find({})
+        res.status(200).send({allOrders})
+    } catch (error) {
+        req.status(404).send({error: "Error retrieving all order items"})
+    }
+}

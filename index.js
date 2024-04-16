@@ -10,7 +10,7 @@ const orderRoutes = require("./routes/order");
 const app = express();
 
 // MongoDB Connection
-mongoose.connect("mongodb+srv://admin:admin123@b402-course-booking.e2a6mg0.mongodb.net/ecommerce-api?retryWrites=true&w=majority&appName=B402-course-booking");
+mongoose.connect("mongodb+srv://alcantarakenandaniel:wnCWEsmez5t5kZBE@b402.rmrkku1.mongodb.net/EcommerceAPI?retryWrites=true&w=majority&appName=B402");
 
 let db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection error"));

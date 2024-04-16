@@ -22,4 +22,8 @@ router.patch('/:productId/archive', verify, verifyAdmin, productController.archi
 // Route for activating product (ADMIN)
 router.patch('/:productId/activate', verify, verifyAdmin, productController.activateProduct);
 
+router.post('/searchByName', verify, productController.searchByName)
+
+router.post('/searchByPrice', verify, productController.searchByPrice)
+
 module.exports = router;

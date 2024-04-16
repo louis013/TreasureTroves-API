@@ -125,3 +125,24 @@ module.exports.activateProduct = (req, res) => {
         res.status(500).send({error: "Error in activating product"})
     })
 };
+
+module.exports.searchByName = async (req,res) => {
+    try {
+        const {name} = req.body
+        const searchedProduct = await Product.find({name: { $regex: name, $options: 'i' }})
+        res.status(200).send({searchedProduct})
+    } catch (error) {
+        res.status(404).send({error: "Product not Found"})
+    }
+
+}
+
+module.exports.searchByPrice = async (req, res) => {
+    try {
+        const {priceRange} = req.body
+        const productSearchedByPrice = await Product.find({ price: { $lte: priceRange } })
+        res.status(200).send({productSearchedByPrice})
+    } catch (error) {
+        res.status(404).send({error: "Product not Found"})
+    }
+}
