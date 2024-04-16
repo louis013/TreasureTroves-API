@@ -22,6 +22,10 @@ module.exports.updateCartQuantity = async (req,res) => {
                 element.subtotal *= req.body.quantity
             }
         });
+
+        // Update totalPrice value of the cart
+        cartUser.totalPrice = cartUser.cartItems.reduce((total, item) => total + item.subtotal, 0);
+
         await Cart.findOneAndUpdate({userId: req.user.id}, {cartItems: cartItems})
         res.status(200).send({message: "Cart quantity updated"})
     } catch (error) {
