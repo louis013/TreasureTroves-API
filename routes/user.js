@@ -11,8 +11,7 @@ router.post("/", userController.registerUser);
 router.post("/login", userController.loginUser);
 
 //Route for getting all user details
-router.get("/details", userController.userDetails)
-
+router.get("/details", verify, userController.userDetails)
 
 //route for changing a user isAdmin status to true
 router.patch("/:userId/set-as-admin", verify, userController.setAsAdmin)
