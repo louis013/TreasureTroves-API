@@ -87,3 +87,90 @@ module.exports.addProductsToCart =  async (req, res) => {
     }
   
 }
+
+// Remove item from cart
+module.exports.removeItemFromCart = async (req, res) => {
+
+    try {
+
+        const userId = req.user.id;
+
+        // Check if user is an admin
+        if(req.user.isAdmin){
+            return res.status(403).send({error: "Admin is not allowed"})
+        }
+        else {
+            // Find user's cart
+            const cart = await Cart.findOne({userId});
+
+            // If user does not have a cart
+            if(!cart) {
+                return res.status(404).send({error: "User does not have a cart"});
+            }
+
+            const productId = req.params.productId;
+
+            // Check if product exists in the cart
+            const index = cart.cartItems.findIndex(item => item.productId === productId);
+
+            if(index !== -1) {
+
+                // Update totalPrice
+                cart.totalPrice -= cart.cartItems[index].subtotal;
+
+                // Remove product from cartItems array
+                cart.cartItems.splice(index, 1);
+
+                // Save updated cart
+                await cart.save();
+
+                // Send response with updated cart contents
+                return res.json({ message: 'Product removed from cart', cart });
+            }
+            else {
+                return res.status(404).json({ message: 'Product not found in cart' });
+            }
+        }
+    }
+    catch(error) {
+        return res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    }
+};
+
+// Clear cart
+module.exports.clearCart = async (req, res) => {
+
+    try {
+        const userId = req.user.id;
+
+        // Check if user is an admin
+        if(req.user.isAdmin == true) {
+            return res.status(403).send({error: "Admin is not allowed"})
+        }
+        else {
+            const cart = await Cart.findOne({ userId });
+
+            // Check if user has a cart
+            if (!cart) {
+                return res.status(404).json({ message: "User does not have a cart" });
+            }
+
+            // Check if the cart is empty
+            if (cart.cartItems.length === 0) {
+                return res.status(400).json({ message: "Cart is already empty" });
+            }
+
+            // Clear the items in cartItems array
+            cart.cartItems = [];
+            // Change the totalPrice to 0
+            cart.totalPrice = 0;
+
+            await cart.save();
+
+            return res.status(200).json({ message: "Items removed from cart successfully", cart });
+        }
+    }
+    catch(error) {
+        return res.status(500).json({ message: "Internal Server Error", error: error.message });
+    }
+};
