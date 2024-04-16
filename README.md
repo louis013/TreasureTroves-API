@@ -44,13 +44,13 @@
 * Retrieve all products
 * Retrieve all active products
 * Retrieve single product
+* Search functionalities
+  * Add search products by their name
+  * Add search products by price range
 
 **Cart Resources**
 * Get User's Cart
 * Change product quantities
-* Search functionalities
-  * Add search products by their name
-  * Add search products by price range
 
 **Order Resources**
 * Retrieve all orders (Admin only)
