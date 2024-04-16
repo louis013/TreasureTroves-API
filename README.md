@@ -29,6 +29,11 @@
 
 **Cart Resources**
 * Add to cart
+* Remove products from cart
+* Clear cart items
+
+**Order Resources**
+* Non-admin User checkout (Create Order)
 
 ### Features by Kenan Daniel Alcantara
 **User Resources**
@@ -43,3 +48,10 @@
 **Cart Resources**
 * Get User's Cart
 * Change product quantities
+* Search functionalities
+  * Add search products by their name
+  * Add search products by price range
+
+**Order Resources**
+* Retrieve all orders (Admin only)
+* Retrieve authenticated user's orders
