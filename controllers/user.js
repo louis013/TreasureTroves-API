@@ -24,11 +24,22 @@ module.exports.registerUser = (req, res) => {
     		password: bcrypt.hashSync(req.body.password, 10)
         })
 
-        return newUser.save()
-        .then((savedUser) => res.status(201).send({message: "Registered Successfully"}))
+        User.findOne({email: req.body.email})
+        .then(existinguser => {
+            if(existinguser) {
+                return res.status(409).send({messagae: "Email already taken"})
+            }
+
+            return newUser.save()
+            .then((savedUser) => res.status(201).send({message: "Registered Successfully"}))
+            .catch(err => {
+                console.error("Error in registering: ", err);
+                res.status(500).send({error: "Error in registering"});
+            })
+        })
         .catch(err => {
-            console.error("Error in registering: ", err);
-            res.status(500).send({error: "Error in registering"});
+            console.error("Error in checking user: ", err);
+            return res.status(500).send({error: "Error in checking user"});
         })
     }
 };
