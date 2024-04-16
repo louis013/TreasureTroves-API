@@ -19,7 +19,7 @@ module.exports.updateCartQuantity = async (req,res) => {
          cartItems.forEach(element => {
             if(element.productId == req.body.productId) {
                 element.quantity = req.body.quantity
-                element.subtotal *= req.body.quantity
+                element.subtotal = req.body.subtotal
             }
         });
 
@@ -27,7 +27,7 @@ module.exports.updateCartQuantity = async (req,res) => {
         cartUser.totalPrice = cartUser.cartItems.reduce((total, item) => total + item.subtotal, 0);
 
         await Cart.findOneAndUpdate({userId: req.user.id}, {cartItems: cartItems})
-        res.status(200).send({message: "Cart quantity updated"})
+        res.status(200).send({message: "Cart quantity updated", cartUser})
     } catch (error) {
         res.status(404).send({error: "Cannot find Cart"})
     }
