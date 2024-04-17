@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const port = 4000;
+const port = 4006;
 
 const userRoutes = require("./routes/user");
 const productRoutes = require("./routes/product");
@@ -20,10 +20,10 @@ db.once("open", () => console.log("Now connected to MongoDB Atlas"));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use("/users", userRoutes);
-app.use("/products", productRoutes);
-app.use("/cart", cartRoutes);
-app.use("/orders", orderRoutes);
+app.use("/b6/users", userRoutes);
+app.use("/b6/products", productRoutes);
+app.use("/b6/cart", cartRoutes);
+app.use("/b6/orders", orderRoutes);
 
 if(require.main === module) {
     app.listen(process.env.PORT || port, () => {
