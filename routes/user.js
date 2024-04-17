@@ -14,7 +14,7 @@ router.post("/login", userController.loginUser);
 router.get("/details", verify, userController.userDetails)
 
 //route for changing a user isAdmin status to true
-router.patch("/:userId/set-as-admin", verify, userController.setAsAdmin)
+router.patch("/:userId/set-as-admin", verify, verifyAdmin, userController.setAsAdmin)
 
 // Route for update password
 router.patch('/update-password', verify, userController.updatePassword);
