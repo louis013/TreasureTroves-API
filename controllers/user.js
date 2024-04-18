@@ -97,7 +97,7 @@ module.exports.userDetails = (req, res) => {
 module.exports.setAsAdmin = (req,res) => {
         
         if (req.user.isAdmin == true){
-            return User.findByIdAndUpdate(req.params.userId, {isAdmin: true}, {new:true})
+            return User.findByIdAndUpdate(req.params.userId, {isAdmin: true})//, {new:true}
             .then(user => {
                 if (user) {
                     res.status(200).send({
