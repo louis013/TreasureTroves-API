@@ -31,8 +31,8 @@ module.exports.createProduct = (req, res) => {
 // Retrieve all Products (Admin)
 module.exports.retrieveAllProducts = async (req,res) => {
     try {
-        const product = await Product.find({})
-        res.status(200).send({product})
+        const products = await Product.find({})
+        res.status(200).send({products})
     } catch (error) {
         res.status(404).send({error: 'Items not Found'})
     }
@@ -129,8 +129,8 @@ module.exports.activateProduct = (req, res) => {
 module.exports.searchByName = async (req,res) => {
     try {
         const {name} = req.body
-        const searchedProduct = await Product.find({name: { $regex: name, $options: 'i' }})
-        res.status(200).send({searchedProduct})
+        const products = await Product.find({name: { $regex: name, $options: 'i' }})
+        res.status(200).send({products})
     } catch (error) {
         res.status(404).send({error: "Product not Found"})
     }
