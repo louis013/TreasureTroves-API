@@ -3,8 +3,8 @@ const Cart = require("../models/Cart");
 module.exports.getProductsCart = async (req,res) => {
 
     try {
-        const cartUser = await Cart.findOne({userId: req.user.id})
-        res.status(200).send({cartUser})
+        const orders = await Cart.findOne({userId: req.user.id})
+        res.status(200).send({orders})
     } catch (error) {
         res.status(404).send({error: "Cannot find Cart"})
     }
