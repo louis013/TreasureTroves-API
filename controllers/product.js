@@ -64,7 +64,7 @@ module.exports.updateProduct = (req, res) => {
         price: req.body.price
     }
 
-    return Product.findByIdAndUpdate(req.params.productId, updatedProduct, {new: true})
+    return Product.findByIdAndUpdate(req.params.productId, updatedProduct)//, {new: true}
     .then(updatedProduct => {
         if(!updatedProduct) {
             res.status(404).send({error: "Product not found"});
