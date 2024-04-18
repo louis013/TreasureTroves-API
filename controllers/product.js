@@ -87,7 +87,7 @@ module.exports.archiveProduct = (req, res) => {
         isActive: false
     }
 
-    return Product.findByIdAndUpdate(req.params.productId, archive, {new: true})
+    return Product.findByIdAndUpdate(req.params.productId, archive)
     .then(archivedProduct => {
         if(!archivedProduct) {
             res.status(404).send({error: "Product not found"});
@@ -110,7 +110,7 @@ module.exports.activateProduct = (req, res) => {
         isActive: true
     }
 
-    return Product.findByIdAndUpdate(req.params.productId, activate, {new: true})
+    return Product.findByIdAndUpdate(req.params.productId, activate)
     .then(activatedProduct => {
         if(!activatedProduct) {
             res.status(404).send({error: "Product not found"});
