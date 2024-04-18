@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const secret = "EcommerceAPI";
+const secret = "ECommerceAPI";
 
 // Token Creation
 module.exports.createAccessToken = (user) => {
