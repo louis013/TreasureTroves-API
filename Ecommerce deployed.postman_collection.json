@@ -1,0 +1,831 @@
+{
+	"info": {
+		"_postman_id": "182f7fd8-b035-4a40-85f2-9dd33e5bc08e",
+		"name": "Ecommerce deployed",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33352429"
+	},
+	"item": [
+		{
+			"name": "Register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Dahyun\",\r\n    \"lastName\": \"Kim\",\r\n    \"email\": \"dubukim@gmail.com\",\r\n    \"password\": \"twice-98\",\r\n    \"mobileNo\": \"09123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/users",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"macgyver@gmail.com\",\r\n    \"password\": \"macnotangus\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/users/login",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjFmNzhjMDZiMmI2ODRhNjNhNGQ4ZiIsImVtYWlsIjoiZHVidWtpbUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzEzNTAyMjc3fQ.P4ExTO-wFt-NfZEc6SovwuGPABOYa3AzF7pTeHRt_-c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"newPassword\": \"twice-98\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/users/update-password",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"users",
+						"update-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjFmNzhjMDZiMmI2ODRhNjNhNGQ4ZiIsImVtYWlsIjoiZHVidWtpbUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzEzNTAyMzc4fQ.pBpMEgPMZ71TDUiBtlpAabrLO-mbKfni5L0OIrA8MEI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/users/details",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"users",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set as admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc4OTgyNmZiNDMzYWQ3ZTc3NDhmMyIsImVtYWlsIjoibWFjZ3l2ZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzEzNTAyNDUyfQ.YfJu5QkfC00p6EHkKcadb4WngTRQOLDLG3Q-jQ0Fa1I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/users/6621f78c06b2b684a63a4d8f/set-as-admin",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"users",
+						"6621f78c06b2b684a63a4d8f",
+						"set-as-admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc4OTgyNmZiNDMzYWQ3ZTc3NDhmMyIsImVtYWlsIjoibWFjZ3l2ZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzEzNTAyNDUyfQ.YfJu5QkfC00p6EHkKcadb4WngTRQOLDLG3Q-jQ0Fa1I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Instant Coffee\",\r\n    \"description\": \"Enjoy a quick caffeine fix with our instant coffee, made from high-quality beans and perfect for brewing a hot cup of joe anytime, anywhere.\",\r\n    \"price\": 80\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/products",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc4OTgyNmZiNDMzYWQ3ZTc3NDhmMyIsImVtYWlsIjoibWFjZ3l2ZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzEzNTAyNDUyfQ.YfJu5QkfC00p6EHkKcadb4WngTRQOLDLG3Q-jQ0Fa1I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Instant Coffee\",\r\n    \"description\": \"Enjoy a quick caffeine fix with our instant coffee, made from high-quality beans and perfect for brewing a hot cup of joe anytime, anywhere.\",\r\n    \"price\": 75\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/products/6621f9dc06b2b684a63a4d9b/update",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"products",
+						"6621f9dc06b2b684a63a4d9b",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Archive product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc4OTgyNmZiNDMzYWQ3ZTc3NDhmMyIsImVtYWlsIjoibWFjZ3l2ZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzEzNTAyNDUyfQ.YfJu5QkfC00p6EHkKcadb4WngTRQOLDLG3Q-jQ0Fa1I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/products/6621f9dc06b2b684a63a4d9b/archive",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"products",
+						"6621f9dc06b2b684a63a4d9b",
+						"archive"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activate product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc4OTgyNmZiNDMzYWQ3ZTc3NDhmMyIsImVtYWlsIjoibWFjZ3l2ZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzEzNTAyNDUyfQ.YfJu5QkfC00p6EHkKcadb4WngTRQOLDLG3Q-jQ0Fa1I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/products/6621f9dc06b2b684a63a4d9b/activate",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"products",
+						"6621f9dc06b2b684a63a4d9b",
+						"activate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc4OTgyNmZiNDMzYWQ3ZTc3NDhmMyIsImVtYWlsIjoibWFjZ3l2ZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzEzNTAyNDUyfQ.YfJu5QkfC00p6EHkKcadb4WngTRQOLDLG3Q-jQ0Fa1I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/products/all",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"products",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all active",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc4OTgyNmZiNDMzYWQ3ZTc3NDhmMyIsImVtYWlsIjoibWFjZ3l2ZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzEzNTAyNDUyfQ.YfJu5QkfC00p6EHkKcadb4WngTRQOLDLG3Q-jQ0Fa1I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/products/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get single product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc4OTgyNmZiNDMzYWQ3ZTc3NDhmMyIsImVtYWlsIjoibWFjZ3l2ZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzEzNTAyNDUyfQ.YfJu5QkfC00p6EHkKcadb4WngTRQOLDLG3Q-jQ0Fa1I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/products/66192508a8a6e63f1832765a",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"products",
+						"66192508a8a6e63f1832765a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by name",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc4OTgyNmZiNDMzYWQ3ZTc3NDhmMyIsImVtYWlsIjoibWFjZ3l2ZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzEzNTAyNDUyfQ.YfJu5QkfC00p6EHkKcadb4WngTRQOLDLG3Q-jQ0Fa1I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"instant\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/products/searchByName",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"products",
+						"searchByName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve product price",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc4OTgyNmZiNDMzYWQ3ZTc3NDhmMyIsImVtYWlsIjoibWFjZ3l2ZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzEzNTAyNDUyfQ.YfJu5QkfC00p6EHkKcadb4WngTRQOLDLG3Q-jQ0Fa1I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"minPrice\": 150,\r\n    \"maxPrice\": 750\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/products/searchByPrice",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"products",
+						"searchByPrice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add to cart",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTRkZjU2ZjlkMmE2YmJjYzMyY2Q5MSIsImVtYWlsIjoiamFzcGVyQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTM1MTAwODh9.InVtY9Y9n_VoHCgnyfXZssqBJkCaBR9UPriScBF5Uek",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": \"661924dba8a6e63f18327656\",\r\n    \"quantity\": 2,\r\n    \"subtotal\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/cart/add-to-cart",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"cart",
+						"add-to-cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user cart",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTRkZjU2ZjlkMmE2YmJjYzMyY2Q5MSIsImVtYWlsIjoiamFzcGVyQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTM1MTAwODh9.InVtY9Y9n_VoHCgnyfXZssqBJkCaBR9UPriScBF5Uek",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/cart/get-cart",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"cart",
+						"get-cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update product quantity",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTRkZjU2ZjlkMmE2YmJjYzMyY2Q5MSIsImVtYWlsIjoiamFzcGVyQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTM1MTAwODh9.InVtY9Y9n_VoHCgnyfXZssqBJkCaBR9UPriScBF5Uek",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": \"66192508a8a6e63f1832765a\",\r\n    \"quantity\": 2,\r\n    \"subtotal\": 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/cart/update-cart-quantity",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"cart",
+						"update-cart-quantity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTRkZjU2ZjlkMmE2YmJjYzMyY2Q5MSIsImVtYWlsIjoiamFzcGVyQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTM1MTAwODh9.InVtY9Y9n_VoHCgnyfXZssqBJkCaBR9UPriScBF5Uek",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/cart/66192508a8a6e63f1832765a/remove-from-cart",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"cart",
+						"66192508a8a6e63f1832765a",
+						"remove-from-cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear cart",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTRkZjU2ZjlkMmE2YmJjYzMyY2Q5MSIsImVtYWlsIjoiamFzcGVyQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTM1MTAwODh9.InVtY9Y9n_VoHCgnyfXZssqBJkCaBR9UPriScBF5Uek",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/cart/clear-cart",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"cart",
+						"clear-cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTRkZjU2ZjlkMmE2YmJjYzMyY2Q5MSIsImVtYWlsIjoiamFzcGVyQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTM1MTAwODh9.InVtY9Y9n_VoHCgnyfXZssqBJkCaBR9UPriScBF5Uek",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/orders/checkout",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"orders",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTRkZjU2ZjlkMmE2YmJjYzMyY2Q5MSIsImVtYWlsIjoiamFzcGVyQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTM1MTAwODh9.InVtY9Y9n_VoHCgnyfXZssqBJkCaBR9UPriScBF5Uek",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/orders/my-orders",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"orders",
+						"my-orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc4OTgyNmZiNDMzYWQ3ZTc3NDhmMyIsImVtYWlsIjoibWFjZ3l2ZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzEzNTEwNjcxfQ.A1Gndo_bfo7Xk_SF20dzN4WgNo8E2lXi-7GJXhSbjE8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-135-239-184.us-east-2.compute.amazonaws.com/b6/orders/all-orders",
+					"protocol": "http",
+					"host": [
+						"ec2-3-135-239-184",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"b6",
+						"orders",
+						"all-orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
