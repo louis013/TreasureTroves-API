@@ -40,8 +40,8 @@ module.exports.retrieveAllProducts = async (req,res) => {
 
 // Retrieve all active Products
 module.exports.retrieveAllActiveProducts = async (req,res) => {
-    const activeProducts = await Product.find({isActive: true})
-    res.status(200).send({activeProducts})
+    const products = await Product.find({isActive: true})
+    res.status(200).send({products})
 }
 
 // Retrieve single product
