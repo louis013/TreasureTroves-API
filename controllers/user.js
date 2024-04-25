@@ -27,7 +27,7 @@ module.exports.registerUser = (req, res) => {
         User.findOne({email: req.body.email})
         .then(existinguser => {
             if(existinguser) {
-                return res.status(409).send({messagae: "Email already taken"})
+                return res.status(409).send({message: "Email already taken"})
             }
 
             return newUser.save()
