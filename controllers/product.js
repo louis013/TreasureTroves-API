@@ -70,7 +70,7 @@ module.exports.updateProduct = (req, res) => {
             res.status(404).send({error: "Product not found"});
         }
         return res.status(200).send({
-            messaage: "Product updated successfully",
+            message: "Product updated successfully",
             updatedProduct: updatedProduct
         })
     })
