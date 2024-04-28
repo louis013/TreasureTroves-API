@@ -9,7 +9,7 @@ router.post('/', verify, verifyAdmin, productController.createProduct);
 
 router.get('/all', verify, verifyAdmin, productController.retrieveAllProducts)
 
-router.get('/', verify, productController.retrieveAllActiveProducts)
+router.get('/', productController.retrieveAllActiveProducts)
 
 router.get('/:productid', verify, productController.retrieveSingleProduct)
 
