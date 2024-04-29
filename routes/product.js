@@ -11,7 +11,7 @@ router.get('/all', verify, verifyAdmin, productController.retrieveAllProducts)
 
 router.get('/', productController.retrieveAllActiveProducts)
 
-router.get('/:productid', verify, productController.retrieveSingleProduct)
+router.get('/:productid', productController.retrieveSingleProduct)
 
 // Route for updating product (ADMIN)
 router.patch('/:productId/update', verify, verifyAdmin, productController.updateProduct);
